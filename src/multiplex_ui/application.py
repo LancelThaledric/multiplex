@@ -17,7 +17,7 @@ class MPApplication(QApplication):
         # Actions
         self.open_files = QAction(text='Open files...')
         self.open_folder = QAction(text='Open folder...')
-        self.menu = QMenuBar()
+        self.menu = QMenuBar(None)
         self.menu_file = self.menu.addMenu('File')
         self.menu_file.addAction(self.open_files)
         self.menu_file.addAction(self.open_folder)
