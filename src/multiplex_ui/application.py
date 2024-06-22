@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QApplication, QMenuBar
 
 from src.multiplex_ui.picker import MPPicker, PickerData
 from src.multiplex_ui.portal import MPPortal
+from src.multiplex_ui.window import MPWindow
 
 
 class MPApplication(QApplication):
@@ -25,6 +26,7 @@ class MPApplication(QApplication):
         # Members
         self.picker = MPPicker()
         self.portal = MPPortal(self.open_files, self.open_folder)
+        self.window = None
 
         # Reactive
         self.open_files.triggered.connect(self.picker.pick_files)
@@ -43,4 +45,4 @@ class MPApplication(QApplication):
 
     @Slot(list)
     def load(self, data: PickerData):
-        print('OPEN', data)
+        self.window = MPWindow(data)
